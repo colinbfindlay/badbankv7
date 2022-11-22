@@ -38,7 +38,7 @@ function App() {
 
               <Route exact path="/deposit" element={<PrivateRoute>
                 <NavBar />
-                <Deposit />
+                <Deposit2 />
               </PrivateRoute>} />
 
               <Route exact path="/withdraw" element={<PrivateRoute>
