@@ -5,6 +5,10 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import TransactionList from './TransactionList'
 
+
+
+
+
 // DEPOSIT COMPONENT -------------------------
 export default function Deposit() {
 
@@ -200,4 +204,6 @@ export default function Deposit() {
     </Container>
   )
 }
+
+
 

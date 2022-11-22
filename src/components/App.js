@@ -2,7 +2,7 @@ import React from "react"
 import Signup from "./Signup"
 import { Container } from 'react-bootstrap'
 import { AuthProvider } from '../contexts/AuthContext'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from "./Dashboard"
 import Login from "./Login"
 import PrivateRoute from './PrivateRoute'
@@ -39,7 +39,7 @@ function App() {
 
               <Route exact path="/deposit" element={<PrivateRoute>
                 <NavBar />
-                <Deposit2 />
+                <Deposit />
               </PrivateRoute>} />
 
               <Route exact path="/withdraw" element={<PrivateRoute>

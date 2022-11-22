@@ -24,14 +24,14 @@ function NavBar() {
   return (
     <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="/">BadBank</Navbar.Brand>
+        <Navbar.Brand href="#">BadBank</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/deposit">Deposit</Nav.Link>
-            <Nav.Link href="/withdraw">Withdraw</Nav.Link>
-            <Nav.Link href="/alldata">All Data</Nav.Link>
+            <Nav.Link href="#/">Home</Nav.Link>
+            <Nav.Link href="#/deposit">Deposit</Nav.Link>
+            <Nav.Link href="#/withdraw">Withdraw</Nav.Link>
+            <Nav.Link href="#/alldata">All Data</Nav.Link>
 
           </Nav>
         </Navbar.Collapse>
