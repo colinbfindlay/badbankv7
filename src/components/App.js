@@ -12,6 +12,7 @@ import NavBar from './NavBar'
 import AllData from './AllData'
 import Home from './Home'
 import Deposit from './Deposit'
+import Deposit2 from './Deposit2'
 import Withdraw from './Withdraw'
 
 
