@@ -60,14 +60,41 @@ export default function Withdraw() {
           })();
           // MongoDB END
 
-          // Transaction Data
-          //fetch('http://localhost:3001/transactions/all') //running locally
-          fetch('/transactions/all') //running from server
+          // Secured Transaction Data
+          if (currentUser) {
+            currentUser.getIdToken()
+            .then(idToken => {
+              console.log('idToken:', idToken);
+              //fetch('http://localhost:3001/transactions/all', {    // running locally
+              fetch('/transactions/all', {                         //running on server
+                method: 'GET',
+                headers: {
+                  'Authorization': idToken
+                }
+              }) 
+            .then(response => response.json())
+            .then(transData => {
+              console.log(transData);
+              setTransData(transData);
+          });
+            }).catch(e => console.log('e:', e));
+          } else {
+            console.warn('There is currently no logged in user. Unable to call Auth Route.');
+          } 
+      
+          
+
+          /*
+          // Unsecured Transaction Data
+          fetch('http://localhost:3001/transactions/all') //running locally
+          //fetch('/transactions/all') //running from server
             .then(response => response.json())
             .then(transData => {
               console.log(transData);
               setTransData(transData);
             });
+          */
+          
          
       },
   });
@@ -103,26 +130,53 @@ export default function Withdraw() {
     return "text-success"
   }
  
-
-
-  // Transaction Data
+  
+  // SECURED Transaction Data
   useEffect(() => {
-    //fetch('http://localhost:3001/transactions/all') //running locally
-    fetch('/transactions/all') //running from server
+    if (currentUser) {
+      currentUser.getIdToken()
+      .then(idToken => {
+        console.log('idToken:', idToken);
+        //fetch('http://localhost:3001/transactions/all', {    // running locally
+        fetch('/transactions/all', {                         //running on server
+          method: 'GET',
+          headers: {
+            'Authorization': idToken
+          }
+        }) 
+      .then(response => response.json())
+      .then(transData => {
+        console.log(transData);
+        setTransData(transData);
+    });
+      }).catch(e => console.log('e:', e));
+    } else {
+      console.warn('There is currently no logged in user. Unable to call Auth Route.');
+    } 
+  }, []); 
+  
+
+  /*
+  // Unsecured Transaction Data
+  useEffect(() => {
+    fetch('http://localhost:3001/transactions/all') //running locally
+    //fetch('/transactions/all') //running from server
       .then(response => response.json())
       .then(transData => {
         console.log(transData);
         setTransData(transData);
       });
   }, []);
+  */
+  
 
 
   return (
     <Container>
+      <h1 className="d-flex justify-content-center">Withdraw</h1>
     <Row>
       <Col sm className="d-flex align-items-top justify-content-center" style={{ minHeight: "50vh"}}>
     <div className="w-100" style={{ maxWidth: "400px" }}>
-    <h1 className="d-flex justify-content-center">Withdraw</h1>
       <br/>
     <Card
     bgcolor="dark"

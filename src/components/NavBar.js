@@ -31,7 +31,6 @@ function NavBar() {
             <Nav.Link href="#/">Home</Nav.Link>
             <Nav.Link href="#/deposit">Deposit</Nav.Link>
             <Nav.Link href="#/withdraw">Withdraw</Nav.Link>
-            <Nav.Link href="#/alldata">All Data</Nav.Link>
 
           </Nav>
         </Navbar.Collapse>

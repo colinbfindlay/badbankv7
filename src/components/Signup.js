@@ -46,6 +46,9 @@ export default function Signup() {
   return (
     <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh"}}>
      <div className="w-100" style={{ maxWidth: "400px" }}>
+     <h1 className="d-flex justify-content-center">Colin Findlay</h1>
+    <h3 className="d-flex justify-content-center">Full Stack Banking Application</h3>
+    <br/>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>

@@ -12,7 +12,6 @@ app.use(cors());
 
 // create user account
 app.get('/account/create/:email', function (req, res) {
-  // else create user
   dal.create(req.params.email)
     .then((user) => {
       console.log(user);
@@ -33,6 +32,31 @@ app.get('/transactions/deposit/:userid/:email/:description/:amount/:isdeposit/:d
 
 // Transaction List
 app.get('/transactions/all', function (req, res) {
+    // read token from header
+    const idToken = req.headers.authorization
+    console.log('header:', idToken);
+  
+    //check, did they pass us the token?
+    //if not, do a 401 error
+    if (!idToken) {
+      res.status(401).send();
+      return
+    } 
+  
+    //check if verify id token was successful
+    //if not, do 401
+  
+    //verify token, is this token valid?
+    admin.auth().verifyIdToken(idToken)
+        .then(function(decodedToken) {
+            console.log('decodedToken:',decodedToken);
+           //res.send('Authentication Success!');
+        }).catch(function(error) {
+            console.log('error:', error);
+            res.status(401).send("Token invalid!");
+        });
+
+  // This part is the same as unsecured...
   dal.allTransactions()
     .then((docs) => {
       console.log(docs);

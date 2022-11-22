@@ -51,11 +51,6 @@ function App() {
                 <UpdateProfile />
               </PrivateRoute>} />
 
-              <Route path="/alldata" element={<PrivateRoute>
-                <NavBar />
-                <AllData />
-              </PrivateRoute>} />
-
             </Routes>
           </AuthProvider>
         </Router>

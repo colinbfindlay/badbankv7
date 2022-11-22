@@ -18,8 +18,8 @@ export default function AllData() {
         currentUser.getIdToken()
         .then(idToken => {
           console.log('idToken:', idToken);
-          //fetch('http://localhost:3001/account/all', {    // running locally
-            fetch('/account/all', {                         //running on server
+          fetch('http://localhost:3001/account/all', {    // running locally
+            //fetch('/account/all', {                         //running on server
             method: 'GET',
             headers: {
               'Authorization': idToken
@@ -36,9 +36,6 @@ export default function AllData() {
       } 
     }, []); 
     
-    
-    
-
     /*
     // UNSECURED ALL USERS
     useEffect(() => {
@@ -51,13 +48,35 @@ export default function AllData() {
      }, []);
      */
 
-
+    // SECURED Transaction Data
+    useEffect(() => {
+      if (currentUser) {
+        currentUser.getIdToken()
+        .then(idToken => {
+          console.log('idToken:', idToken);
+          fetch('http://localhost:3001/transactions/all', {    // running locally
+            //fetch('/transactions/all', {                         //running on server
+            method: 'GET',
+            headers: {
+              'Authorization': idToken
+            }
+          }) 
+        .then(response => response.json())
+        .then(transData => {
+          console.log(transData);
+          setTransData(transData);
+      });
+        }).catch(e => console.log('e:', e));
+      } else {
+        console.warn('There is currently no logged in user. Unable to call Auth Route.');
+      } 
+    }, []); 
     
 
 
 
-    /* --- This Works
-    // Transaction Data
+    /*
+    // Unsecured Transaction Data
     useEffect(() => {
       fetch('http://localhost:3001/transactions/all') //running locally
       //fetch('/account/all') //running from server
