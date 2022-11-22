@@ -106,7 +106,7 @@ export default function Deposit() {
   }
  
 
-  /* Testing this on Ubuntu to see if it's the problem
+
   // Transaction Data
   useEffect(() => {
     //fetch('http://localhost:3001/transactions/all') //running locally
@@ -117,7 +117,7 @@ export default function Deposit() {
         setTransData(transData);
       });
   }, []);
-  */
+
 
 
   return (

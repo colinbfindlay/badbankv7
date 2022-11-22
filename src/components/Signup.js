@@ -31,7 +31,8 @@ export default function Signup() {
     // Firebase END
 
     // MongoDB Create User
-    const url = `http://localhost:3001/account/create/${emailRef.current.value}`; //running locally
+    //const url = `http://localhost:3001/account/create/${emailRef.current.value}`; //running locally
+    const url = `/account/create/${emailRef.current.value}`; // running from server
     (async () => {
       var res = await fetch (url);
       var data = await res.json();
