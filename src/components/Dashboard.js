@@ -1,6 +1,6 @@
 import { updateCurrentUser } from 'firebase/auth'
 import React, { useState } from 'react'
-import { Card, Button, Alert } from 'react-bootstrap'
+import { Card, Button, Alert, Container } from 'react-bootstrap'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -21,10 +21,11 @@ export default function Dashboard() {
   }
 
   return (
-    <>
+    <Container className="d-flex align-items-top justify-content-center" style={{ minHeight: "100vh"}}>
+      <div className="w-100" style={{ maxWidth: "400px" }}>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
+          <h2 className="text-center mb-4">BadBank Dashboard</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
@@ -35,6 +36,7 @@ export default function Dashboard() {
       <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleLogout}>Log Out</Button>
       </div>
-    </>
+      </div>
+    </Container>
   )
 }

@@ -8,7 +8,67 @@ import Login from "./Login"
 import PrivateRoute from './PrivateRoute'
 import ForgotPassword from './ForgotPassword'
 import UpdateProfile from './UpdateProfile'
+import NavBar from './NavBar'
+import AllData from './AllData'
+import Home from './Home'
+import Deposit from './Deposit'
+import Withdraw from './Withdraw'
 
+
+
+function App() {
+  return(
+
+    
+        <Router>
+          <AuthProvider>
+            <Routes>
+              
+
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            
+            
+              <Route exact path="/" element={<PrivateRoute>
+                <NavBar />
+                <Home />
+              </PrivateRoute>} />
+
+              <Route exact path="/deposit" element={<PrivateRoute>
+                <NavBar />
+                <Deposit />
+              </PrivateRoute>} />
+
+              <Route exact path="/withdraw" element={<PrivateRoute>
+                <NavBar />
+                <Withdraw />
+              </PrivateRoute>} />
+
+              <Route path="/update-profile" element={<PrivateRoute>
+                <UpdateProfile />
+              </PrivateRoute>} />
+
+              <Route path="/alldata" element={<PrivateRoute>
+                <NavBar />
+                <AllData />
+              </PrivateRoute>} />
+
+            </Routes>
+          </AuthProvider>
+        </Router>
+
+
+
+  )
+}
+
+export default App;
+
+
+
+/*
 function App() {
   return(
 
@@ -18,6 +78,7 @@ function App() {
           <AuthProvider>
             <Routes>
               <Route exact path="/" element={<PrivateRoute>
+                <NavBar />
                 <Dashboard />
               </PrivateRoute>} />
               <Route path="/update-profile" element={<PrivateRoute>
@@ -37,3 +98,4 @@ function App() {
 }
 
 export default App;
+*/
