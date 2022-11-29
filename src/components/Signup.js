@@ -9,6 +9,7 @@ export default function Signup() {
   const passwordConfirmRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -23,11 +24,20 @@ export default function Signup() {
       setError('')
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      navigate("/")
+      //setSuccess('You have successfully signed up!  Taking you to the Home Page.')
+      //alert('Account Successfully Created!')
+      setLoading(true)
+      navigate("/welcome")
+      /*setTimeout(() => {
+        navigate("/")
+      }, 2000)*/
+      
+
+
     } catch {
       setError('Failed to create an account')
     }
-    setLoading(false)
+    //setLoading(false)
     // Firebase END
 
     // MongoDB Create User
@@ -53,19 +63,23 @@ export default function Signup() {
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
           <Form onSubmit={handleSubmit} >
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control disabled={loading} type="email" ref={emailRef} required />
             </Form.Group>
+            <br/>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
+              <Form.Control disabled={loading} type="password" ref={passwordRef} required />
             </Form.Group>
+            <br/>
             <Form.Group id="password-confirm">
               <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
+              <Form.Control disabled={loading} type="password" ref={passwordConfirmRef} required/>
             </Form.Group>
+            <br/>
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
             </Button>

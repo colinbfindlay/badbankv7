@@ -42,10 +42,12 @@ export default function Login() {
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" ref={emailRef} required />
               </Form.Group>
+              <br/>
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" ref={passwordRef} required />
               </Form.Group>
+              <br/>
               <Button disabled={loading} className="w-100" type="submit">
                 Log In
               </Button>

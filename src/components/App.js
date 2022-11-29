@@ -14,6 +14,7 @@ import Home from './Home'
 import Deposit from './Deposit'
 import Deposit2 from './Deposit2'
 import Withdraw from './Withdraw'
+import Welcome from './Welcome'
 
 
 
@@ -35,6 +36,11 @@ function App() {
               <Route exact path="/" element={<PrivateRoute>
                 <NavBar />
                 <Home />
+              </PrivateRoute>} />
+
+              <Route exact path="/welcome" element={<PrivateRoute>
+                <NavBar />
+                <Welcome />
               </PrivateRoute>} />
 
               <Route exact path="/deposit" element={<PrivateRoute>
